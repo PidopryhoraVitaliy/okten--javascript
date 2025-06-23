@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>other_array_tasks</title>
+</head>
+<body>
+<script>
+    function getRandomIntInclusive(min, max) {
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(max);
+        return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+    }
+
+    console.log('1. Створити пустий масив та :');
+
+    console.log('a. заповнити його 50 парними числами за допомоги циклу.');
+    const array = [];
+    for (let i = 1; i <= 50; i++) {
+        array.push(i * 2);
+    }
+    console.log(array);
+
+    console.log('b. заповнити його 50 непарними числами за допомоги циклу.');
+    array.length = 0;
+    for (let i = 1; i <= 99; i++) {
+        if (i % 2 !== 0) {
+            array.push(i);
+        }
+    }
+    console.log(array);
+
+    console.log('c. Заповнити масив 20-ма рандомними числами. (Google: Generate random number JS)');
+    array.length = 0;
+    for (let i = 1; i <= 20; i++) {
+        array.push(getRandomIntInclusive(0, 100));
+    }
+    console.log(array);
+
+    console.log('d. Заповнити масив 20-ма рандомними числами в діапазоні від 8 до 732 (Google: Generate random number JS)');
+    array.length = 0;
+    for (let i = 1; i <= 20; i++) {
+        array.push(getRandomIntInclusive(8, 732));
+    }
+    console.log(array);
+
+    //============================================================
+
+    console.log('2. Вивести за допомогою console.log кожен третій елемент');
+    for (let i = 2; i < array.length; i+=3) {
+        console.log(array[i]);
+    }
+
+    console.log('3. Вивести за допомогою console.log кожен третій елемент, тільки якщо цей елемент є парним.');
+    for (let i = 2; i < array.length; i+=3) {
+        if (array[i] % 2 === 0) {
+            console.log(array[i]);
+        }
+    }
+
+    console.log('4. Вивести за допомогою console.log кожен третій елемент, тільки якщо цей елемент є парним, та записати їх в новий масив');
+    const evenElements = [];
+    for (let i = 2; i < array.length; i+=3) {
+        if (array[i] % 2 === 0) {
+            console.log(array[i]);
+            evenElements.push(array[i]);
+        }
+    }
+    console.log(evenElements);
+
+    console.log('5. Вивести кожен елемент масиву, сусід справа якого є парним');
+    console.log('   EXAMPLE: [ 1, 2, 3, 5, 7, 9, 56, 8, 67 ] -> Має бути виведено 1, 9, 56');
+    // const example = [1, 2, 3, 5, 7, 9, 56, 8, 67];
+    const example = [...array];
+    console.log(example);
+    for (let i = 0; i < example.length - 1; i++) {
+        if (example[i + 1] % 2 === 0) {
+            console.log(example[i]);
+        }
+    }
+
+    console.log('6. Є масив з числами [100,250,50,168,120,345,188], Які характеризують вартість окремої покупки. Обрахувати середній чек.');
+    const amounts = [100, 250, 50, 168, 120, 345, 188];
+    let sum = 0;
+    for (const amount of amounts) {
+        sum += amount;
+    }
+    const average = (amounts.length) ? sum / amounts.length : 0;
+    console.log('середній чек: ', average.toFixed(2));
+
+    console.log('7. Створити масив з рандомними значеннями, помножити всі його елементи на 5 та перемістити їх в інший масив.');
+
+    console.log('8. Створити масив з будь-якими значеннями (стрінги, числа, і тд…). пройтись по ньому, і, якщо елемент є числом, додати його в інший масив.');
+</script>
+</body>
+</html>
+
+<!--1. Створити пустий масив та :-->
+<!--    a. заповнити його 50 парними числами за допомоги циклу.-->
+<!--    b. заповнити його 50 непарними числами за допомоги циклу.-->
+<!--    c. Заповнити масив 20-ма рандомними числами. (Google: Generate random number JS)-->
+<!--    d. Заповнити масив 20-ма рандомними числами в діапазоні від 8 до 732 (Google: Generate random number JS)-->
+<!--2. Вивести за допомогою console.log кожен третій елемент-->
+<!--3. Вивести за допомогою console.log кожен третій елемент, тільки якщо цей елемент є парним.-->
+<!--4. Вивести за допомогою console.log кожен третій елемент, тільки якщо цей елемент є парним, та записати їх в новий масив-->
+<!--5. Вивести кожен елемент масиву, сусід справа якого є парним-->
+<!--EXAMPLE: [ 1, 2, 3, 5, 7, 9, 56, 8, 67 ] -> Має бути виведено 1, 9, 56-->
+<!--6. Є масив з числами [100,250,50,168,120,345,188], Які характеризують вартість окремої покупки. Обрахувати середній чек.-->
+<!--7. Створити масив з рандомними значеннями, помножити всі його елементи на 5 та перемістити їх в інший масив.-->
+<!--8. Створити масив з будь-якими значеннями (стрінги, числа, і тд…). пройтись по ньому, і, якщо елемент є числом, додати його в інший масив.-->
+
+<!--– Взяти масив з 10 чисел або створити його. Вивести в консоль тільки ті елементи, значення яких є парними.-->
+<!--– Взяти масив з 10 чисел або створити його. Створити 2-й порожній масив. За допомогою будь-якого циклу скопіювати значення одного масиву в інший.-->
+<!--– Дано масив: [ ‘a’, ‘b’, ‘c’] . За допомогою циклу for зібрати всі букви в слово.-->
+<!--– Дано масив: [ ‘a’, ‘b’, ‘c’] . За допомогою циклу while зібрати всі букви в слово.-->
+<!--– Дано масив: [ ‘a’, ‘b’, ‘c’] . За допомогою циклу for of зібрати всі букви в слово.-->
